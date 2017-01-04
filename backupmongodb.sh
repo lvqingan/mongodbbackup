@@ -42,7 +42,7 @@ for KEY in "${!DBHOST[@]}"; do
     mongodump --host=${DBHOST[$KEY]} --port=${DBPORT[$KEY]} --username=${DBUSER[$KEY]} --password=${DBPASS[$KEY]} \
       ${DBOPTIONS[$KEY]} --db=$database $COLLECTIONS --out=$BACKDIR/$SERVER-$database-$DATE-mongodbbackup
     cd $BACKDIR
-    $COMPRESSION_COMMAND --remove-files $SERVER-$database-$DATE-mongodbbackup.$COMPRESSION_EXTENSION $SERVER-$database-$DATE-mongodbbackup
+    $COMPRESSION_COMMAND $SERVER-$database-$DATE-mongodbbackup.$COMPRESSION_EXTENSION $SERVER-$database-$DATE-mongodbbackup
     echo "done!"
   done
 done
